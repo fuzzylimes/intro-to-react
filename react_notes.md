@@ -25,3 +25,6 @@ Note that this is huge: ~134MB when building a new project.
 1. __Functional Components__: are stateless, and are written as functions. Should be used as often as possible
 2. __class-based components__: stateful/containers. Use the `extends Component` class syntax
 * Use single `{}` brases to incude javascript inline in JSX.
+* Use `props` to access arguments passed to components
+* Use `props.children` to access values passed betwen component tabs (i.e. `<Person>This is a test</Person>`)
+* If the state property changes, it will cause the element to be re-rendered.
