@@ -42,3 +42,56 @@ Note that this is huge: ~134MB when building a new project.
 * Can use `bind` to pass in a parameter to a method
 * Can also use a function call to do the update
     * Can affect perfomance, bind is recommended.
+
+## List Conditionals
+* Can use ternary operator to deal with conditional statements
+* For example, you can write an if block in the following way:
+```jsx
+{ 
+    this.state.showPersons ? 
+        <div>
+            <Person 
+                name={this.state.persons[0].name} 
+                age={this.state.persons[0].age}/>
+            <Person 
+                name={this.state.persons[1].name} 
+                age={this.state.persons[1].age}
+                click={this.switchNameHandler.bind(this, 'fuzzylimes')}
+                changed={this.nameChangedHandler}>Hobbies: Cooking</Person>
+            <Person 
+                name={this.state.persons[2].name} 
+                age={this.state.persons[2].age}/>
+        </div> : null
+}
+```
+* Could also use something like `this.state.showPersons === true ?...`
+* The prefered alternative to this is to do it in a more javascript way, with writing a function within the render method. This will cause the function to be executed/evaluated every time that React needs to re-render the DOM.
+```jsx
+let persons = null;
+if (this.state.showPersons) {
+    persons = (
+    <div>
+        <Person
+        name={this.state.persons[0].name}
+        age={this.state.persons[0].age} />
+        <Person
+        name={this.state.persons[1].name}
+        age={this.state.persons[1].age}
+        click={this.switchNameHandler.bind(this, 'fuzzylimes')}
+        changed={this.nameChangedHandler}>Hobbies: Cooking</Person>
+        <Person
+        name={this.state.persons[2].name}
+        age={this.state.persons[2].age} />
+    </div>
+    );
+}
+```
+* Using this syntax, you only need to include a `{persons}` in the render return.
+* This method is recommended over the previous
+
+## Helpful links
+* create-react-app: https://github.com/facebookincubator/create-react-app
+* Introducing JSX: https://reactjs.org/docs/introducing-jsx.html
+* Rendering Elements: https://reactjs.org/docs/rendering-elements.html
+* Components & Props: https://reactjs.org/docs/components-and-props.html
+* Listenable Events: https://reactjs.org/docs/events.html
