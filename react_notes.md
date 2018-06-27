@@ -43,7 +43,7 @@ Note that this is huge: ~134MB when building a new project.
 * Can also use a function call to do the update
     * Can affect perfomance, bind is recommended.
 
-## List Conditionals
+## Basic Conditionals
 * Can use ternary operator to deal with conditional statements
 * For example, you can write an if block in the following way:
 ```jsx
@@ -88,6 +88,28 @@ if (this.state.showPersons) {
 ```
 * Using this syntax, you only need to include a `{persons}` in the render return.
 * This method is recommended over the previous
+
+## Handling Lists
+* To ouput the contents of a list out to the dom, you can iterate through it using a normal javascript `.map()` method:
+```jsx
+if (this.state.showPersons) {
+      persons = (
+        <div>
+          {this.state.persons.map(person => {
+            return (
+              <Person
+                name={person.name}
+                age={person.age} />
+            )
+          })}
+        </div>
+      );
+    }
+```
+* Key prop should be used when you're using lists, React expects to find it
+    * Helps reach to do its updating
+    * Will typically just use a unique identifier, like an id from the db
+
 
 ## Helpful links
 * create-react-app: https://github.com/facebookincubator/create-react-app
