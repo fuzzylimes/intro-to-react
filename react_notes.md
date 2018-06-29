@@ -110,6 +110,51 @@ if (this.state.showPersons) {
     * Helps reach to do its updating
     * Will typically just use a unique identifier, like an id from the db
 
+## Styling React Components
+### Setting Styles Dynamically
+* Just use javascript to set them. I guess there's nothing special here? Not really sure what the point of this lecture was...
+
+### Setting Class Name Dynamically
+* Again... just use javascript. Not really sure what the point of this lecture is, other than showing that you can use javascript.
+
+### Radium
+* Third party package that lets you do more with inline styling in React
+* Allows you to use psuedo selectors inline (i.e. things like setting `:hover` state)
+```js
+const style = {
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
+    }
+...
+style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
+```
+* You must remember to wrap the export function in Radium
+* In order to use media queries or things like it, you have to also import `StyleRoot` from radium and wrap you rentire component with it:
+```js
+return (
+      <StyleRoot>
+      <div className="App">
+        <h1>Hi, I'm a react app!</h1>
+        <p className={classes.join(' ')}>This is really working!</p>
+        <button 
+          style={style}
+          onClick={this.togglePersonsHandler}>Toggle Names</button>
+        {persons}
+      </div>
+      </StyleRoot>
+    );
+```
 
 ## Helpful links
 * create-react-app: https://github.com/facebookincubator/create-react-app
@@ -117,3 +162,5 @@ if (this.state.showPersons) {
 * Rendering Elements: https://reactjs.org/docs/rendering-elements.html
 * Components & Props: https://reactjs.org/docs/components-and-props.html
 * Listenable Events: https://reactjs.org/docs/events.html
+* Conditional Rendering: https://reactjs.org/docs/conditional-rendering.html
+* Lists & Keys: https://reactjs.org/docs/lists-and-keys.html
